@@ -7,25 +7,6 @@ use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,18 +16,18 @@ class RatingController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $rating = new Rating([
+            'user_id' => auth()->user()->id,
+            'rating' =>$request->rating,
+            'review' => $request->review,
+            'user_name' => auth()->user()->name,
+            'lessoncount' => $request->lessoncount,
+            'language' => $request->language
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Rating  $rating
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Rating $rating)
-    {
-        
+        $rating ->save();
+
+        return redirect()->back();
     }
 
     /**

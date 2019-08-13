@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/', 'BlogController');
 Route::get('/teacher', 'TeacherController@index');
-Route::get('/ratings', 'TeacherController@create');
-Route::post('/ratings', 'TeacherController@store')->name('ratings');
+Route::get('/ratings', 'RatingController@create');
+Route::post('/ratings', 'RatingController@store')->name('ratings');
 Route::post('ratings/update/{rating}','RatingController@update' )->name('ratings.update');
 Route::post('ratings/delete','RatingController@destroy' )->name('ratings.destroy');
